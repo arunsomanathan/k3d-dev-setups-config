@@ -134,24 +134,26 @@ function check_cluster_exist() {
             name="k3s-default"
         fi
     fi
+    name=$(echo $name | xargs )
     pretty_print "Check whether the cluster with name $name exist"
     
     clusterList=$(k3d cluster list --no-headers | awk '{ print $1}')
 
     for clusterName in $clusterList
     do
-            if [ "$name" = "$clusterName" ]
-            then
-                    clusterExist=true
-                    break
-            fi
+        clusterName=$(echo $name | xargs )
+        if [ "$name" = "$clusterName" ]
+        then
+            clusterExist=true
+            break
+        fi
     done
 
     if [ $clusterExist = true ]
     then
-            pretty_print "$name cluster exists"
+        pretty_print "$name cluster exists"
     else
-            pretty_print "$name cluster does not exists"
+        pretty_print "$name cluster does not exists"
     fi
 
     pretty_print "================================================================================"
@@ -185,7 +187,7 @@ function find_value_from_yaml() {
 
         }
     }')
-    echo $value
+    echo $value | cut -f1 -d"#"
 }
 
 # DESC: Delete the cluster
@@ -195,9 +197,9 @@ function delete_cluster() {
     if [ $clusterExist = true ]
 
     then
+        pretty_print "================================================================================" $fg_red
         pretty_print "Cluster - $name already exist. Do you want to delete it and create a new cluster ? [y/N]" $fg_red
         read -p "" confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || script_exit "" 
-        pretty_print "================================================================================" $fg_red
         pretty_print "Deleting $name cluster" $fg_red
         
         k3d cluster delete $name
