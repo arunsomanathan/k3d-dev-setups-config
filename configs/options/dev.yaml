@@ -1,0 +1,16 @@
+options:
+  k3d: 
+    wait: true 
+    timeout: "600s" 
+    disableLoadbalancer: false 
+    disableImageVolume: false 
+    disableRollback: false 
+    disableHostIPInjection: false 
+  k3s: 
+    extraServerArgs: 
+      - --tls-san=k8s.home.in
+      - --disable=traefik
+    extraAgentArgs: [] 
+  kubeconfig:
+    updateDefaultKubeconfig: true 
+    switchCurrentContext: true 

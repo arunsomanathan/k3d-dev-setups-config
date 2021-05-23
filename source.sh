@@ -397,3 +397,19 @@ function run_as_root() {
 }
 
 # vim: syntax=sh cc=80 tw=79 ts=4 sw=4 sts=4 et sr
+
+
+# DESC: Merge yaml file to temp config yaml file
+# ARGS: None
+# OUTS: None
+function merge_yaml() {
+    yq eval-all --inplace 'select(fileIndex == 0) * select(fileIndex == 1) ' ${temp_conf_file} ${1} 
+}
+
+# DESC: Find the value for a key in a yaml file.
+# ARGS: $1 - The yaml file to be parsed, $2 - the key to be searched
+# OUTS: None
+function find_value_from_yaml() {
+    value=$(yq eval '.'${2}' as $val | $val' ${1})
+    echo ${value}
+}

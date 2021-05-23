@@ -13,6 +13,7 @@ Prerequisite
 ------------
 - Docker    - https://docs.docker.com/get-docker/
 - k3d       - https://k3d.io/#installation
+- yq        - https://mikefarah.gitbook.io/yq/
 
 Usage
 --------------

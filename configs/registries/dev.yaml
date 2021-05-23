@@ -1,0 +1,19 @@
+registries: 
+  create: true 
+  config: | 
+    mirrors:
+      "registry-1.docker.io":
+        endpoint:
+          - http://192.168.2.50:5000
+      "k8s.gcr.io":
+        endpoint:
+          - http://192.168.2.50:5001
+      "gcr.io":
+        endpoint:
+          - http://192.168.2.50:5002
+      "ghcr.io":
+        endpoint:
+          - http://192.168.2.50:5003
+      "quay.io":
+        endpoint:
+          - http://192.168.2.50:5004

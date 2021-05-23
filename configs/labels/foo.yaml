@@ -1,0 +1,4 @@
+labels:
+  - label: foo=bar
+    nodeFilters:
+      - server[*]

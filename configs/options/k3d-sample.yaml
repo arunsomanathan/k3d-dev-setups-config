@@ -1,0 +1,17 @@
+options:
+  k3d: # k3d runtime settings
+    wait: true # wait for cluster to be usable before returining; same as `--wait` (default: true)
+    timeout: "60s" # wait timeout before aborting; same as `--timeout 60s`
+    disableLoadbalancer: false # same as `--no-lb`
+    disableImageVolume: false # same as `--no-image-volume`
+    disableRollback: false # same as `--no-Rollback`
+    disableHostIPInjection: false # same as `--no-hostip`
+  k3s: # options passed on to K3s itself
+    extraServerArgs: # additional arguments passed to the `k3s server` command; same as `--k3s-server-arg`
+      - --tls-san=my.host.domain
+    extraAgentArgs: [] # addditional arguments passed to the `k3s agent` command; same as `--k3s-agent-arg`
+  kubeconfig:
+    updateDefaultKubeconfig: true # add new cluster to your default Kubeconfig; same as `--kubeconfig-update-default` (default: true)
+    switchCurrentContext: true # also set current-context to the new cluster's context; same as `--kubeconfig-switch-context` (default: true)
+  runtime: # runtime (docker) specific options
+    gpuRequest: all # same as `--gpus all`

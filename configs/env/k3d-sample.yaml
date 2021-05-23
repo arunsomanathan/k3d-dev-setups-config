@@ -1,0 +1,4 @@
+env:
+  - envVar: bar=baz # same as `--env 'bar=baz@server[0]'`
+    nodeFilters:
+      - server[0]

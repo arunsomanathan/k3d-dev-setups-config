@@ -1,0 +1,4 @@
+labels:
+  - label: foo=bar # same as `--label 'foo=bar@agent[1]'`
+    nodeFilters:
+      - agent[1]

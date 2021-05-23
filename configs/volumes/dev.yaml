@@ -1,0 +1,4 @@
+volumes: 
+  - volume: /tmp:/tmp/
+    nodeFilters:
+      - all

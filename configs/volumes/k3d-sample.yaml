@@ -1,0 +1,5 @@
+volumes: # repeatable flags are represented as YAML lists
+  - volume: /my/host/path:/path/in/node # same as `--volume '/my/host/path:/path/in/node@server[0];agent[*]'`
+    nodeFilters:
+      - server[0]
+      - agent[*]
