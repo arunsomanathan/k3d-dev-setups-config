@@ -316,9 +316,9 @@ function create_cluster() {
     pretty_print "Setting up and starting ${name} cluster" ${fg_cyan}
     if test -f "${temp_conf_file}"
     then
-        k3d cluster create ${name}
-    else
         k3d cluster create ${name} --config "${temp_conf_file}"
+    else
+        k3d cluster create ${name}
     fi
     pretty_print "================================================================================" ${fg_cyan}
 }
