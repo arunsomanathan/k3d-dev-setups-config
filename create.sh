@@ -318,7 +318,7 @@ function create_cluster() {
     then
         k3d cluster create ${name}
     else
-        k3d cluster create ${name} --config "${config}"
+        k3d cluster create ${name} --config "${temp_conf_file}"
     fi
     pretty_print "================================================================================" ${fg_cyan}
 }
