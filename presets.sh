@@ -4,7 +4,8 @@ presets=( /
 'k3d-default' /         #The default configuration of k3d
 'k3d-sample-conf' /     #The sample configuration in k3d site
 'single-node-dev' /     #Single node development cluster (no treafik)
-'multi-node-dev' /      #Multi node development cluster (1 server 3 agents with no traefik)
+'two-node-dev' /        #Two node development cluster (1 server 2 agents with no traefik)
+'three-node-dev' /      #Three node development cluster (1 server 3 agents with no traefik)
 )
 
 #Different useful presets for k3d cluster are maintained here
@@ -49,9 +50,13 @@ function prepare_preset_config() {
         "single-node-dev") 
             prepare_single_node_dev_config 
             ;;
-        "multi-node-dev") 
+        "three-node-dev") 
             prepare_single_node_dev_config
             merge_yaml ./configs/agents/3.yaml 
+            ;;
+        "two-node-dev") 
+            prepare_single_node_dev_config
+            merge_yaml ./configs/agents/2.yaml 
             ;;
     esac
 }
